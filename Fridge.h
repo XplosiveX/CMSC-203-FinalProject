@@ -1,3 +1,13 @@
+#include <random>
+#include <iostream>
+#include <vector>
+#include <random>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+//#include "Fridge.h"
+using namespace std;
+
 class Fridge{
 private:
 int recipeone = 1;
@@ -5,25 +15,28 @@ int recipetwo = 2;
 int reciptethree = 3;
 int j = 0;
 bool run = false;
-
+int genNUM(){
+ srand(time(NULL));
+ int attempt = rand()%8;
+ return attempt;
+}
 int recursiveAttempter(){
-for(int k=0; k < total; k) {
- int attempt = (rand() % 8);
- 
+for(int k=0; k < total - 15; k) {
+
  //for debugging purposes
  //cout << attempt << "attempt value" << endl;
  //cout << bread << "Bread value" << endl;
  //cout << hamburger << " Hamburger value" << endl;
  
  
- if(attempt == 0 && bread > 0 && hamburger > 0){ 
+ if(genNUM() == 0 && bread > 0 && hamburger > 0){ 
      cout << "you have made a hamburger!!" << endl;
      hamburger--;
      bread--;
      return 0;
  }
 
-if(attempt == 1 && mushroom > 0 && oninon > 0 && potato > 0){
+if(genNUM() == 1 && mushroom > 0 && oninon > 0 && potato > 0){
  cout << "you have made mushroom soup!!" << endl;
      mushroom--;
      oninon--;
@@ -31,36 +44,58 @@ if(attempt == 1 && mushroom > 0 && oninon > 0 && potato > 0){
      return 0;
 }
 
-if(attempt == 2 && oninon > 0){
+if(genNUM() == 2 && oninon > 0){
  cout << "You made some good ol' diced onions!!" << endl;
      oninon--;
      return 0;
 }
 
-if(attempt == 3 && lettuce > 0 && pickle > 0){
+if(genNUM() == 3 && lettuce > 0 && pickle > 0){
  cout << "You made a delicious salad!!" << endl;
      pickle--;
      lettuce--;
      return 0;
 }
 
-if(attempt == 4 && cheese > 0 && bread > 0){
+if(genNUM() == 4 && cheese > 0 && bread > 0){
  cout << "You made a beautiful grilled cheese!!" << endl;
      cheese--;
      bread--;
      return 0;
 }
 
-if(attempt == 5 && cheese > 0 && bread > 0){
- cout << "You made a beautiful grilled cheese!!" << endl;
-     cheese--;
-     bread--;
+if(genNUM() == 5 && potato > 0){
+ cout << "You have designed a delectable cake using only potatos somehow." << endl;
+     potato--;
      return 0;
 }
+
+if(genNUM() == 6 && pickle > 0){
+ cout << "No need to cook when pickles exist !!" << endl;
+     pickle--;
+     return 0;
+}
+
+if(genNUM() == 7 && pickle > 0 && hamburger > 0 && oninon > 0 && lettuce > 0 && bread > 0 && mushroom > 0){
+ cout << "This burger is the work of god." << endl;
+     pickle--;
+     hamburger--;
+     oninon--;
+     lettuce--;
+     bread--;
+     mushroom--;
+     return 0;
+}
+
+if(genNUM() == 8 && potato > 0){
+ cout << "You have deep fried some delicious french fries!!" << endl;
+    potato--;
+    return 0;
+}
     
     
 }
-cout << "Sadly after many attempts you fail to cook anything :(. {" << total << "} attempts to be exact." << endl;     
+cout << "Sadly after many attempts you fail to cook anything :(. {" << total - 15 << "} attempts to be exact." << endl;     
 
 }
 
@@ -82,7 +117,7 @@ int oninon = 0;
 //index 7
 int mushroom = 0;
 int total = 0;
- int arraysize =  25;
+int arraysize =  25;
 
 int genFridge(int size){
     vector<int> fridgeArray(size);
@@ -136,5 +171,4 @@ bread = 0 , pickle = 0 , hamburger = 0 , lettuce = 0, cheese = 0, potato = 0, on
 int makeItem(){
 recursiveAttempter();  
 }
-
 };
