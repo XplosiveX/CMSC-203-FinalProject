@@ -1,6 +1,69 @@
 class Fridge{
 private:
+int recipeone = 1;
+int recipetwo = 2;
+int reciptethree = 3;
+int j = 0;
 bool run = false;
+
+int recursiveAttempter(){
+for(int k=0; k < total; k) {
+ int attempt = (rand() % 8);
+ 
+ //for debugging purposes
+ //cout << attempt << "attempt value" << endl;
+ //cout << bread << "Bread value" << endl;
+ //cout << hamburger << " Hamburger value" << endl;
+ 
+ 
+ if(attempt == 0 && bread > 0 && hamburger > 0){ 
+     cout << "you have made a hamburger!!" << endl;
+     hamburger--;
+     bread--;
+     return 0;
+ }
+
+if(attempt == 1 && mushroom > 0 && oninon > 0 && potato > 0){
+ cout << "you have made mushroom soup!!" << endl;
+     mushroom--;
+     oninon--;
+     potato--;
+     return 0;
+}
+
+if(attempt == 2 && oninon > 0){
+ cout << "You made some good ol' diced onions!!" << endl;
+     oninon--;
+     return 0;
+}
+
+if(attempt == 3 && lettuce > 0 && pickle > 0){
+ cout << "You made a delicious salad!!" << endl;
+     pickle--;
+     lettuce--;
+     return 0;
+}
+
+if(attempt == 4 && cheese > 0 && bread > 0){
+ cout << "You made a beautiful grilled cheese!!" << endl;
+     cheese--;
+     bread--;
+     return 0;
+}
+
+if(attempt == 5 && cheese > 0 && bread > 0){
+ cout << "You made a beautiful grilled cheese!!" << endl;
+     cheese--;
+     bread--;
+     return 0;
+}
+    
+    
+}
+cout << "Sadly after many attempts you fail to cook anything :(. {" << total << "} attempts to be exact." << endl;     
+
+}
+
 public:
 // index 0 
 int bread = 0;
@@ -18,17 +81,25 @@ int potato = 0;
 int oninon = 0;
 //index 7
 int mushroom = 0;
-int genFridge(int length){
-int arr[length];
-    random_device rd;
-    default_random_engine dre(rd());
-    uniform_int_distribution<int> uid(0,7);
-    
-    generate(arr, arr + sizeof(arr) / sizeof(int), [&] () { return uid(dre); });
-    cout << "Behold! Your Fridge" << "\n";
-    cout << "It Holds:{"<< length <<  "} Items! " << "\n";
-    cout << "____________________" << "\n";
-    for (int a : arr){
+int total = 0;
+ int arraysize =  25;
+
+int genFridge(int size){
+    vector<int> fridgeArray(size);
+    cout << "Behold! Your Fridge" << endl;
+    cout << "It Holds:{"<< size <<  "} Items! " << endl;
+    cout << "________________" << endl; 
+   for(int i=0; i < size; i++){ fridgeArray[i]=rand()%7; }
+    for (int a : fridgeArray) {
+    j++;
+    if(j < 5){
+    if(j < 2){cout << "||";}
+    cout << "{" << a <<  "}";
+    }else{
+    cout << "||";
+    cout << endl;
+    j = 0;
+    }
     if(a == 0){bread++;}    
     if(a == 1){pickle++;}    
     if(a == 2){hamburger++;}  
@@ -38,14 +109,32 @@ int arr[length];
     if(a == 6){oninon++;}
     if(a == 7){mushroom++;}
 }
+cout << "_______________" << endl;
+total = mushroom + oninon + potato + cheese + lettuce + hamburger + pickle + bread;
 run = true;
-return 1;
 }
+    
+
 
 int getItems(){
-cout <<"Current bread supply! :" << bread << "}" << endl;
-cout <<"Current pickle supply! {" << pickle << "}" << endl;
-cout <<"Current hamburger supply! {" << hamburger << "}" << endl;
-cout <<"Current hamburger supply! {" << hamburger << "}" << endl;
+cout << endl;
+cout <<"Current bread (zeros) supply! {" << bread << "}" << endl;
+cout <<"Current pickle (ones) supply! {" << pickle << "}" << endl;
+cout <<"Current hamburger (twos) patty supply! {" << hamburger << "}" << endl;
+cout <<"Current lettuce (threes) supply! {" << lettuce << "}" << endl;
+cout <<"Current cheese (fours) supply! {" << cheese << "}" << endl;
+cout <<"Current potato (fives) supply! {" << potato << "}" << endl;
+cout <<"Current oninon (sixes) supply! {" << oninon << "}" << endl;
+cout <<"Current mushroom (sevens) supply! {" << mushroom << "}" << endl;
 }
+
+int clear(){
+bread = 0 , pickle = 0 , hamburger = 0 , lettuce = 0, cheese = 0, potato = 0, oninon = 0 , mushroom = 0;
+}
+
+
+int makeItem(){
+recursiveAttempter();  
+}
+
 };
