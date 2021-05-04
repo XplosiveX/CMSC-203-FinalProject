@@ -1,42 +1,42 @@
-#include <random>
-#include <iostream>
-#include <vector>
-#include <random>
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-//#include "Fridge.h"
-using namespace std;
-
 class Fridge{
 private:
 int recipeone = 1;
 int recipetwo = 2;
 int reciptethree = 3;
 int j = 0;
+int h = 0;
 bool run = false;
-int genNUM(){
- srand(time(NULL));
- int attempt = rand()%8;
+
+int returnSeed(){
+return rand()%10000;
+}
+int genNUM(int passed){
+ srand(returnSeed());
+ //cout << returnSeed() << endl;
+ int attempt = rand()%passed;
  return attempt;
 }
+
+
 int recursiveAttempter(){
-for(int k=0; k < total - 15; k) {
+cout << "trying to make some food!" << endl;
+while(true == true){
+h++;
 
  //for debugging purposes
- //cout << attempt << "attempt value" << endl;
+ //cout << genNUM() << "attempt value" << endl;
  //cout << bread << "Bread value" << endl;
  //cout << hamburger << " Hamburger value" << endl;
  
  
- if(genNUM() == 0 && bread > 0 && hamburger > 0){ 
+ if(genNUM(3) == 0 && bread > 0 && hamburger > 0){ 
      cout << "you have made a hamburger!!" << endl;
      hamburger--;
      bread--;
      return 0;
  }
 
-if(genNUM() == 1 && mushroom > 0 && oninon > 0 && potato > 0){
+if(genNUM(4) == 1 && mushroom > 0 && oninon > 0 && potato > 0){
  cout << "you have made mushroom soup!!" << endl;
      mushroom--;
      oninon--;
@@ -44,39 +44,39 @@ if(genNUM() == 1 && mushroom > 0 && oninon > 0 && potato > 0){
      return 0;
 }
 
-if(genNUM() == 2 && oninon > 0){
+if(genNUM(3) == 2 && oninon > 0){
  cout << "You made some good ol' diced onions!!" << endl;
      oninon--;
      return 0;
 }
 
-if(genNUM() == 3 && lettuce > 0 && pickle > 0){
+if(genNUM(5) == 3 && lettuce > 0 && pickle > 0){
  cout << "You made a delicious salad!!" << endl;
      pickle--;
      lettuce--;
      return 0;
 }
 
-if(genNUM() == 4 && cheese > 0 && bread > 0){
+if(genNUM(4) == 4 && cheese > 0 && bread > 0){
  cout << "You made a beautiful grilled cheese!!" << endl;
      cheese--;
      bread--;
      return 0;
 }
 
-if(genNUM() == 5 && potato > 0){
+if(genNUM(6) == 5 && potato > 0){
  cout << "You have designed a delectable cake using only potatos somehow." << endl;
      potato--;
      return 0;
 }
 
-if(genNUM() == 6 && pickle > 0){
+if(genNUM(7) == 6 && pickle > 0){
  cout << "No need to cook when pickles exist !!" << endl;
      pickle--;
      return 0;
 }
 
-if(genNUM() == 7 && pickle > 0 && hamburger > 0 && oninon > 0 && lettuce > 0 && bread > 0 && mushroom > 0){
+if(genNUM(8) == 7 && pickle > 0 && hamburger > 0 && oninon > 0 && lettuce > 0 && bread > 0 && mushroom > 0){
  cout << "This burger is the work of god." << endl;
      pickle--;
      hamburger--;
@@ -87,15 +87,17 @@ if(genNUM() == 7 && pickle > 0 && hamburger > 0 && oninon > 0 && lettuce > 0 && 
      return 0;
 }
 
-if(genNUM() == 8 && potato > 0){
+if(genNUM(9) == 8 && potato > 0){
  cout << "You have deep fried some delicious french fries!!" << endl;
     potato--;
     return 0;
 }
-    
-    
-}
-cout << "Sadly after many attempts you fail to cook anything :(. {" << total - 15 << "} attempts to be exact." << endl;     
+if(h = 5){
+cout << "Sadly after many attempts you fail to cook anything :(. { 5 } attempts to be exact." << endl; 
+h = 0;
+return 0;
+}}
+
 
 }
 
@@ -147,6 +149,7 @@ int genFridge(int size){
 cout << "_______________" << endl;
 total = mushroom + oninon + potato + cheese + lettuce + hamburger + pickle + bread;
 run = true;
+return 0;
 }
     
 
@@ -161,6 +164,7 @@ cout <<"Current cheese (fours) supply! {" << cheese << "}" << endl;
 cout <<"Current potato (fives) supply! {" << potato << "}" << endl;
 cout <<"Current oninon (sixes) supply! {" << oninon << "}" << endl;
 cout <<"Current mushroom (sevens) supply! {" << mushroom << "}" << endl;
+return 0;
 }
 
 int clear(){
@@ -169,6 +173,7 @@ bread = 0 , pickle = 0 , hamburger = 0 , lettuce = 0, cheese = 0, potato = 0, on
 
 
 int makeItem(){
-recursiveAttempter();  
+recursiveAttempter();
+return 0;
 }
 };
