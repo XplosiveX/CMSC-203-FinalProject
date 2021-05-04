@@ -1,9 +1,21 @@
-#include <iostream>
-#include <algorithm>
 #include <random>
-//#include "Fridge.h"
+#include <iostream>
+#include <vector>
+#include <random>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include "Fridge.h"
 using namespace std;
+
+
 int main(){
-Fridge myfridge;
-myfridge.genFridge(3);
+//accepted functions
+//Fridge ::define you object:: 
+//example:
+//Fridge myfridge
+//myfridge.genFridge()
+//myfridge.getItems()
+//myfridge.clear()
+//myfridge.makeItem()
 }
